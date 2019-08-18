@@ -1,0 +1,11 @@
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\bin\Debug\netcoreapp1.1\Mangalyaan.deps.json
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\bin\Debug\netcoreapp1.1\Mangalyaan.runtimeconfig.json
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\bin\Debug\netcoreapp1.1\Mangalyaan.runtimeconfig.dev.json
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\bin\Debug\netcoreapp1.1\Mangalyaan.dll
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\bin\Debug\netcoreapp1.1\Mangalyaan.pdb
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\obj\Debug\netcoreapp1.1\Mangalyaan.csprojResolveAssemblyReference.cache
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\obj\Debug\netcoreapp1.1\Mangalyaan.csproj.CoreCompileInputs.cache
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\obj\Debug\netcoreapp1.1\Mangalyaan.AssemblyInfoInputs.cache
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\obj\Debug\netcoreapp1.1\Mangalyaan.AssemblyInfo.cs
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\obj\Debug\netcoreapp1.1\Mangalyaan.dll
+c:\users\sjana\source\repos\Mangalyaan\Mangalyaan\obj\Debug\netcoreapp1.1\Mangalyaan.pdb
