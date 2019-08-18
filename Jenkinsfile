@@ -41,7 +41,7 @@ pipeline
             steps
             {
                 echo "Building Project"
-                bat "dotnet build ${params.Repository}.sln --Configuration Release"
+                bat "dotnet build ${params.Repository}.sln --configuration Release"
                 echo "Build success"
             }
         }
