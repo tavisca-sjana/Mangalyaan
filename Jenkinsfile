@@ -17,15 +17,14 @@ pipeline
                 parameters {
                     string(name: 'USERNAME', defaultValue: none, description: 'eg.SoumyadeepJana')
                 }
-            }
-            input
-            {
+                
                 message "Enter repo name"
                 parameters
                 {
                     string(name:'REPO',defaultValue:none,description:'eg. ShoppingCart')
                 }
             }
+           
             steps
             {
                 git "https://github.com/${USERNAME}/${REPO}.git"
