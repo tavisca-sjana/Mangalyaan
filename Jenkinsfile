@@ -92,7 +92,7 @@ pipeline
                             //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
                             //customImage.push()
                             bat "docker tag mangalyaan soumyadcoder/mangalyaan"
-                            bat "docker push soumyadcoder/mangalyaan"
+                            powershell "docker push soumyadcoder/mangalyaan"
                             // sh 'docker push brightbox/terraform:latest'
                             // sh 'docker push brightbox/cli:latest'
                             echo "Pushed Success"
