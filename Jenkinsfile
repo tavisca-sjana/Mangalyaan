@@ -13,16 +13,13 @@ pipeline
         {
 
             input {
-                message "Enter github username"
+                message "Enter github username and repo"
                 parameters {
                     string(name: 'USERNAME', defaultValue: none, description: 'eg.SoumyadeepJana')
-                }
-                
-                message "Enter repo name"
-                parameters
-                {
                     string(name:'REPO',defaultValue:none,description:'eg. ShoppingCart')
                 }
+
+               
             }
            
             steps
