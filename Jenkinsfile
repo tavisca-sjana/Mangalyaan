@@ -15,8 +15,8 @@ pipeline
             input {
                 message "Enter github username and repo"
                 parameters {
-                    string(name: 'USERNAME', defaultValue: none, description: 'eg.SoumyadeepJana')
-                    string(name:'REPO',defaultValue:none,description:'eg. ShoppingCart')
+                    string(name: 'USERNAME', defaultValue:'lol', description: 'eg.SoumyadeepJana')
+                    string(name:'REPO',defaultValue:'lol1',description:'eg. ShoppingCart')
                 }
 
                
