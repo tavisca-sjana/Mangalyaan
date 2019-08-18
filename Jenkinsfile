@@ -46,7 +46,7 @@ pipeline
             steps
             {
                 echo "Building Project"
-                bat "dotnet build ${params.Repository}.sln --configuration Release"
+                sh "dotnet build ${params.Repository}.sln --configuration Release"
                 echo "Build success"
             }
         }
@@ -64,7 +64,7 @@ pipeline
             steps
             {
                 echo "Publish Start"
-                bat "dotnet publish ${params.Repository}.sln"
+                sh "dotnet publish ${params.Repository}.sln"
                 echo "Publish Success"
             }
         }
@@ -74,7 +74,7 @@ pipeline
             steps
             {
                 echo "Starting Docker Image generation"
-                bat "docker build --tag=mangalyaan ."
+                sh "docker build --tag=mangalyaan ."
                 echo "Docker Image Generation Successful"
             }
         }
@@ -86,7 +86,7 @@ pipeline
                 echo "Pushing image to docker hub"
                 // docker.withRegistry(credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com')
                 // {
-                //     bat "docker tag mangalyaan /my_image"
+                //     sh "docker tag mangalyaan /my_image"
                 // }
                
                     script{
@@ -101,8 +101,8 @@ pipeline
                             echo "Pushed Success"
                         }
                     }
-                    // bat "docker tag mangalyaan $username/mangalyaan"
-                    // bat "docker push $username/mangalyaan"
+                    // sh "docker tag mangalyaan $username/mangalyaan"
+                    // sh "docker push $username/mangalyaan"
                     // echo "Pushed Success"
                 
             }
