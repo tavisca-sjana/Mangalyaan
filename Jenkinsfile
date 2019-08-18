@@ -77,8 +77,8 @@ pipeline
                         {
                             withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) 
                             {
-                                 bat "docker tag ${params.ImageName} ${user}/${params.ImageName}"
-                                 bat "docker push ${user}/${params.ImageName}"
+                                 bat "docker tag image-${params.ImageName} ${user}/image-${params.ImageName}"
+                                 bat "docker push ${user}/image-${params.ImageName}"
 
                             }
  
