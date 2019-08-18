@@ -21,7 +21,7 @@ pipeline
             }
             steps
             {
-                echo "hi ${input.PERSON}"
+                echo "hi ${PERSON}"
                 echo "Hello World with process ${params.PROCESS}"
             }
         }
