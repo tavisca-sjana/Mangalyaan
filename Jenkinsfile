@@ -89,9 +89,10 @@ pipeline
                         {
                             //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
                             //customImage.push()
-                            bat "docker tag mangalyaan $username/mangalyaan"
-                            bat "docker push $username/mangalyaan"
-                            echo "Pushed Success"
+                            sh "docker tag mangalyaan $username/mangalyaan"
+                            sh "docker push $username/mangalyaan"
+                            // sh 'docker push brightbox/terraform:latest'
+                            // sh 'docker push brightbox/cli:latest'
                             echo "Pushed Success"
                         }
                     }
