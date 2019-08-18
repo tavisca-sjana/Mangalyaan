@@ -45,5 +45,32 @@ pipeline
                 echo "Build success"
             }
         }
+
+        stage('Test')
+        {
+            steps
+            {
+                echo "Test"
+            }
+        }
+
+        stage('Publish-Output')
+        {
+            steps
+            {
+                echo "Publish Start"
+                bat "dotnet publish ${params.Repository}.sln"
+                echo "Publish Success"
+            }
+        }
+
+        stage('Docker-Image-Generation')
+        {
+            steps
+            {
+                echo "Starting Docker Image generation"
+                bat "docker build --tag=/${params.Repository/bin/Release/PublishOutput/} ."
+            }
+        }
     }
 }
