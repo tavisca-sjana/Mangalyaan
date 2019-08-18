@@ -28,8 +28,9 @@ pipeline
             steps
             {
                 //git "https://github.com/${params.UserName}/${params.Repository}.git//${params.Branch}"
-                checkout([$class: 'GitSCM', branches: [[name: "*/${params.Branch}"]],
-                    userRemoteConfigs: [[url: "http://github/${params.UserName}/${params.Repository}.git"]]])
+                //checkout([$class: 'GitSCM', branches: [[name: "*/${params.Branch}"]],
+                    //userRemoteConfigs: [[url: "http://github/${params.UserName}/${params.Repository}.git"]]])
+                git branch: "${params.Branch}", url: "https://github.com/${params.UserName}/${params.Repository}.git"
                 echo "The application type is ${params.AppType}"
                 echo "Clone Success"
             }
