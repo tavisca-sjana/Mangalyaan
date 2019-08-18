@@ -73,5 +73,23 @@ pipeline
                 echo "Docker Image Generation Successful"
             }
         }
+
+        stage('Docker Push')
+        {
+            steps
+            {
+                echo "Pushing image to docker hub"
+                // docker.withRegistry(credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com')
+                // {
+                //     bat "docker tag mangalyaan /my_image"
+                // }
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'password', usernameVariable: 'username')]) 
+                {
+                    bat "docker tag mangalyaan $username/mangalyaan"
+                    bat "docker push $username/mangalyaan"
+                    echo "Pushed Success"
+                }
+            }
+        }
     }
 }
