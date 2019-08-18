@@ -12,7 +12,7 @@ pipeline
 
     environment
     {
-         PATH = "C:\Program Files\Git\bin\git.exe"
+         PATH = 'C:/Program Files/Git/bin/git.exe'
     }
 
     stages
