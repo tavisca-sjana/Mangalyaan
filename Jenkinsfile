@@ -85,9 +85,16 @@ pipeline
                 // }
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'password', usernameVariable: 'username')]) 
                 {
-                    bat "docker tag mangalyaan $username/mangalyaan"
-                    bat "docker push $username/mangalyaan"
-                    echo "Pushed Success"
+
+                     docker.withRegistry(credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com')
+                        {
+                            bat "docker tag mangalyaan $username/mangalyaan"
+                            bat "docker push $username/mangalyaan"
+                            echo "Pushed Success"
+                        }
+                    // bat "docker tag mangalyaan $username/mangalyaan"
+                    // bat "docker push $username/mangalyaan"
+                    // echo "Pushed Success"
                 }
             }
         }
