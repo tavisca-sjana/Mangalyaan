@@ -87,11 +87,11 @@ pipeline
                 // }
                
                     script{
-                     docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials')
+                     docker.withRegistry('docker-hub-credentials','')
                         {
                             //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
                             //customImage.push()
-                            bat "docker tag mangalyaan soumyadcoder/mangalyaan"
+                            powershell "docker tag mangalyaan soumyadcoder/mangalyaan"
                             powershell "docker push soumyadcoder/mangalyaan"
                             // sh 'docker push brightbox/terraform:latest'
                             // sh 'docker push brightbox/cli:latest'
