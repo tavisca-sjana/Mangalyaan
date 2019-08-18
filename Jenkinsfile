@@ -5,6 +5,7 @@ pipeline
     parameters
     {
         choice(name:'PROCESS',choices:['build','test','deploy'],description:'This is name of process')
+        choice(name:'AppType',choices:['Console App','Web App'],description:'Type of app')
     }
 
     stages
@@ -26,6 +27,7 @@ pipeline
             {
                 git "https://github.com/${USERNAME}/${REPO}.git"
                 echo "Hello World with process ${params.PROCESS}"
+                echo "The application type is ${params.AppType}"
                 echo "Clone Success"
             }
         }
