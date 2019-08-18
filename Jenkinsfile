@@ -30,6 +30,7 @@ pipeline
             {
                 git "https://github.com/${USERNAME}/${REPO}.git"
                 echo "Hello World with process ${params.PROCESS}"
+                echo "Clone Success"
             }
         }
     }
