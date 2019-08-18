@@ -46,7 +46,7 @@ pipeline
             steps
             {
                 echo "Building Project"
-                ${env.PATH} "dotnet build ${params.Repository}.sln --configuration Release"
+                bat "dotnet build ${params.Repository}.sln --configuration Release"
                 echo "Build success"
             }
         }
@@ -64,7 +64,7 @@ pipeline
             steps
             {
                 echo "Publish Start"
-                sh "dotnet publish ${params.Repository}.sln"
+                bat "dotnet publish ${params.Repository}.sln"
                 echo "Publish Success"
             }
         }
@@ -74,7 +74,7 @@ pipeline
             steps
             {
                 echo "Starting Docker Image generation"
-                sh "docker build --tag=mangalyaan ."
+                bat "docker build --tag=mangalyaan ."
                 echo "Docker Image Generation Successful"
             }
         }
@@ -94,8 +94,8 @@ pipeline
                         {
                             //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
                             //customImage.push()
-                            ${PATH} "docker tag mangalyaan $username/mangalyaan"
-                            ${PATH} "docker push $username/mangalyaan"
+                            bat "docker tag mangalyaan soumyadcoder/mangalyaan"
+                            bat "docker push soumyadcoder/mangalyaan"
                             // sh 'docker push brightbox/terraform:latest'
                             // sh 'docker push brightbox/cli:latest'
                             echo "Pushed Success"
