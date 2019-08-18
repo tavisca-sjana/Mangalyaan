@@ -4,7 +4,7 @@ pipeline
 
     parameters
     {
-        choice(name:'Process',choices:['build','test','deploy'],description:'This is name of process')
+        choice(name:'PROCESS',choices:['build','test','deploy'],description:'This is name of process')
     }
 
     stages
@@ -13,8 +13,7 @@ pipeline
         {
 
             input {
-                message "Should we continue?"
-                ok "Yes, we should."
+                message "Enter github link?"
                 submitter "alice,bob"
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -22,7 +21,8 @@ pipeline
             }
             steps
             {
-                echo "Hello World with process ${params.Process}"
+                echo "hi ${input.PERSON}"
+                echo "Hello World with process ${params.PROCESS}"
             }
         }
     }
