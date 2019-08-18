@@ -6,6 +6,7 @@ pipeline
     {
         choice(name:'PROCESS',choices:['build','test','deploy'],description:'This is name of process')
         choice(name:'AppType',choices:['Console App','Web App'],description:'Type of app')
+        string(name:'Usertype',defaultValue:'Admin',description:'Type of user')
     }
 
     stages
