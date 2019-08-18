@@ -4,10 +4,10 @@ pipeline
 
     parameters
     {
-        choice(name:'AppType',choices:['Console App','Web App'],description:'Type of app')
         string(name:'UserName',defaultValue:'',description:'Enter Github UserName')
         string(name:'Repository',defaultValue:'',description:'Enter Repository Name')
         string(name:'Branch',defaultValue:'',description:'Enter branch name')
+        string(name:'ImageName',defaultValue:'',description:'Enter docker image name')
     }
 
    
@@ -17,21 +17,10 @@ pipeline
         stage('Git-Checkout')
         {
 
-            // input {
-            //     message "Enter github username and repo"
-            //     parameters {
-            //         string(name: 'USERNAME', defaultValue:'lol', description: 'eg.SoumyadeepJana')
-            //         string(name:'REPO',defaultValue:'lol1',description:'eg. ShoppingCart')
-            //     }
-
-               
-            // }
-           
+            
             steps
             {
-                //git "https://github.com/${params.UserName}/${params.Repository}.git//${params.Branch}"
-                //checkout([$class: 'GitSCM', branches: [[name: "*/${params.Branch}"]],
-                    //userRemoteConfigs: [[url: "http://github/${params.UserName}/${params.Repository}.git"]]])
+                
                 git branch: "${params.Branch}", url: "https://github.com/${params.UserName}/${params.Repository}.git"
                 echo "The application type is ${params.AppType}"
                 echo "Clone Success"
@@ -65,13 +54,14 @@ pipeline
                 echo "Publish Success"
             }
         }
+        
 
         stage('Docker-Image-Generation')
         {
             steps
             {
                 echo "Starting Docker Image generation"
-                bat "docker build --tag=mangalyaan ."
+                bat "docker build --tag=image-${params.ImageName} ."
                 echo "Docker Image Generation Successful"
             }
         }
@@ -81,27 +71,21 @@ pipeline
             steps
             {
                 echo "Pushing image to docker hub"
-                // docker.withRegistry(credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com')
-                // {
-                //     sh "docker tag mangalyaan /my_image"
-                // }
-               
+                
                     script{
                      docker.withRegistry('https://index.docker.io/v1/','docker-hub-credentials')
                         {
-                            //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
-                            //customImage.push()
-                            bat "docker tag mangalyaan soumyadcoder/mangalyaan"
-                            bat "docker push soumyadcoder/mangalyaan"
-                            // sh 'docker push brightbox/terraform:latest'
-                            // sh 'docker push brightbox/cli:latest'
-                            echo "Pushed Success"
+                            withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'pass', usernameVariable: 'user')]) 
+                            {
+                                 bat "docker tag ${params.ImageName} ${user}/${params.ImageName}"
+                                 bat "docker push ${user}/${params.ImageName}"
+
+                            }
+ 
                         }
                     }
-                    // sh "docker tag mangalyaan $username/mangalyaan"
-                    // sh "docker push $username/mangalyaan"
-                    // echo "Pushed Success"
-                
+                    echo "Pushed Success"
+                 
             }
         }
     }
