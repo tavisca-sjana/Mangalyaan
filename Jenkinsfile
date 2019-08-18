@@ -13,14 +13,22 @@ pipeline
         {
 
             input {
-                message "Enter github link?"
+                message "Enter github username"
                 parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    string(name: 'USERNAME', defaultValue: none, description: 'eg.SoumyadeepJana')
+                }
+            }
+            input
+            {
+                message "Enter repo name"
+                parameters
+                {
+                    string(name:'REPO',defaultValue:none,description:'eg. ShoppingCart')
                 }
             }
             steps
             {
-                echo "hi ${PERSON},you are shit"
+                git "https://github.com/${USERNAME}/${REPO}.git"
                 echo "Hello World with process ${params.PROCESS}"
             }
         }
