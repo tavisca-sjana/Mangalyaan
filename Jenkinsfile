@@ -12,7 +12,7 @@ pipeline
 
     stages
     {
-        stage('Just a step')
+        stage('Git-Checkout')
         {
 
             // input {
@@ -33,6 +33,16 @@ pipeline
                 git branch: "${params.Branch}", url: "https://github.com/${params.UserName}/${params.Repository}.git"
                 echo "The application type is ${params.AppType}"
                 echo "Clone Success"
+            }
+        }
+
+        stage('Build')
+        {
+            steps
+            {
+                echo "Building Project"
+                bat "dotnet build ${params.Repository}.sln --Configuration Release"
+                echo "Build success"
             }
         }
     }
