@@ -10,6 +10,11 @@ pipeline
         string(name:'Branch',defaultValue:'',description:'Enter branch name')
     }
 
+    environment
+    {
+         PATH = "C:\Program Files\Git\bin\git.exe"
+    }
+
     stages
     {
         stage('Git-Checkout')
@@ -89,8 +94,8 @@ pipeline
                         {
                             //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
                             //customImage.push()
-                            sh "docker tag mangalyaan $username/mangalyaan"
-                            sh "docker push $username/mangalyaan"
+                            ${PATH} "docker tag mangalyaan $username/mangalyaan"
+                            ${PATH} "docker push $username/mangalyaan"
                             // sh 'docker push brightbox/terraform:latest'
                             // sh 'docker push brightbox/cli:latest'
                             echo "Pushed Success"
