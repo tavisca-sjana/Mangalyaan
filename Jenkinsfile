@@ -14,14 +14,13 @@ pipeline
 
             input {
                 message "Enter github link?"
-                submitter "alice,bob"
                 parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
                 }
             }
             steps
             {
-                echo "hi ${PERSON}"
+                echo "hi ${PERSON},you are shit"
                 echo "Hello World with process ${params.PROCESS}"
             }
         }
