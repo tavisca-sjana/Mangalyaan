@@ -83,20 +83,19 @@ pipeline
                 // {
                 //     bat "docker tag mangalyaan /my_image"
                 // }
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'password', usernameVariable: 'username')]) 
-                {
+               
                     script{
                      docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials')
                         {
-                            bat "docker tag mangalyaan $username/mangalyaan"
-                            bat "docker push $username/mangalyaan"
+                            def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
+                            customImage.push()
                             echo "Pushed Success"
                         }
                     }
                     // bat "docker tag mangalyaan $username/mangalyaan"
                     // bat "docker push $username/mangalyaan"
                     // echo "Pushed Success"
-                }
+                
             }
         }
     }
