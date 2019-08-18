@@ -69,7 +69,8 @@ pipeline
             steps
             {
                 echo "Starting Docker Image generation"
-                bat "docker build --tag=/${params.Repository/bin/Release/PublishOutput/} ."
+                bat "docker build --tag=${params.Repository} ."
+                echo "Docker Image Generation Successful"
             }
         }
     }
