@@ -10,10 +10,7 @@ pipeline
         string(name:'Branch',defaultValue:'',description:'Enter branch name')
     }
 
-    environment
-    {
-         PATH = 'C:/Program Files/Git/bin/git.exe'
-    }
+   
 
     stages
     {
