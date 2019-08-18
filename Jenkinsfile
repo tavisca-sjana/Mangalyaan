@@ -87,8 +87,11 @@ pipeline
                     script{
                      docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials')
                         {
-                            def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
-                            customImage.push()
+                            //def customImage = docker.build("mangalyaan:${env.BUILD_ID}")
+                            //customImage.push()
+                            bat "docker tag mangalyaan $username/mangalyaan"
+                            bat "docker push $username/mangalyaan"
+                            echo "Pushed Success"
                             echo "Pushed Success"
                         }
                     }
