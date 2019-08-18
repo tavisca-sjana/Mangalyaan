@@ -86,7 +86,7 @@ pipeline
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', passwordVariable: 'password', usernameVariable: 'username')]) 
                 {
                     script{
-                     docker.withRegistry(credentialsId: 'docker-hub-credentials', url: 'https://registry.hub.docker.com')
+                     docker.withRegistry('https://registry.hub.docker.com','docker-hub-credentials',)
                         {
                             bat "docker tag mangalyaan $username/mangalyaan"
                             bat "docker push $username/mangalyaan"
