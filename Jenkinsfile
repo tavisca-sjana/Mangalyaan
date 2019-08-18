@@ -27,7 +27,7 @@ pipeline
            
             steps
             {
-                git "https://github.com/${params.UserName}/${params.Repository}/${params.Branch}.git"
+                git "https://github.com/${params.UserName}/${params.Repository}.git//${params.Branch}"
                 echo "The application type is ${params.AppType}"
                 echo "Clone Success"
             }
