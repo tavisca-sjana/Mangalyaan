@@ -69,7 +69,7 @@ pipeline
             steps
             {
                 echo "Starting Docker Image generation"
-                bat "docker build --tag=${params.Repository} ."
+                bat "docker build --tag=mangalyaan ."
                 echo "Docker Image Generation Successful"
             }
         }
