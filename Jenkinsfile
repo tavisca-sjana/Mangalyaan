@@ -29,7 +29,7 @@ pipeline
             {
                 //git "https://github.com/${params.UserName}/${params.Repository}.git//${params.Branch}"
                 checkout([$class: 'Git', branches: [[name: "*/${params.Branch}"]],
-                    userRemoteConfigs: [[url: "http://git-server/${params.UserName}/${params.Repository}.git"]]])
+                    userRemoteConfigs: [[url: "http://github/${params.UserName}/${params.Repository}.git"]]])
                 echo "The application type is ${params.AppType}"
                 echo "Clone Success"
             }
